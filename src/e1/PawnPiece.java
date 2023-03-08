@@ -10,7 +10,7 @@ public class PawnPiece extends AbstractPiece {
     }
 
     @Override
-    boolean canMove(int x, int y) {
+    boolean canMove(Pair<Integer, Integer> position) {
         return false;
     }
 }

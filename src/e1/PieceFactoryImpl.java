@@ -2,12 +2,12 @@ package e1;
 
 public class PieceFactoryImpl implements PieceFactory {
     @Override
-    public KnightPiece knight() {
-        return new KnightPiece(new Pair<>(0,0));
+    public KnightPiece knight(Pair<Integer, Integer> pos) {
+        return new KnightPiece(pos);
     }
 
     @Override
-    public PawnPiece pawn() {
-        return new PawnPiece(new Pair<>(0,0));
+    public PawnPiece pawn(Pair<Integer, Integer> pos) {
+        return new PawnPiece(pos);
     }
 }

@@ -16,14 +16,14 @@ class PieceFactoryTest {
 
     @Test
     void testCreateKnight() {
-        AbstractPiece knight = this.pieceFactory.knight();
+        AbstractPiece knight = this.pieceFactory.knight(new Pair<>(0,0));
         assertNotNull(knight);
     }
 
 
     @Test
     void testCreatePawn() {
-        AbstractPiece pawn = this.pieceFactory.pawn();
+        AbstractPiece pawn = this.pieceFactory.pawn(new Pair<>(0,0));
         assertNotNull(pawn);
     }
 }

@@ -6,7 +6,9 @@ public class KnightPiece extends AbstractPiece {
     }
 
     @Override
-    boolean canMove(int x, int y) {
+    boolean canMove(Pair<Integer, Integer> position) {
+        int x = position.getX();
+        int y = position.getY();
         return x != 0 && y != 0 && Math.abs(x) + Math.abs(y) == 3;
     }
 }
