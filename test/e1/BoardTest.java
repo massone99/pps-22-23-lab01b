@@ -13,7 +13,6 @@ public class BoardTest {
     @BeforeEach
     void setUp() {
         this.board = new BoardImpl(SIZE);
-        System.out.println(this.board);
     }
 
     @Test
