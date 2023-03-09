@@ -1,5 +1,8 @@
 package e1;
 
+import e1.pieces.KnightPiece;
+import e1.pieces.PieceFactory;
+import e1.pieces.PieceFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

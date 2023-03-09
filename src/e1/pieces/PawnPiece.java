@@ -1,4 +1,7 @@
-package e1;
+package e1.pieces;
+
+import e1.Pair;
+import e1.pieces.AbstractPiece;
 
 /**
  * A class modelling a Pawn.
@@ -10,7 +13,7 @@ public class PawnPiece extends AbstractPiece {
     }
 
     @Override
-    boolean canMove(Pair<Integer, Integer> position) {
+    public boolean canMove(Pair<Integer, Integer> position) {
         return false;
     }
 }

@@ -1,4 +1,6 @@
-package e1;
+package e1.board;
+
+import e1.Pair;
 
 /**
  * An interface for a chess board.

@@ -1,6 +1,12 @@
-package e1;
+package e1.board;
 
-import java.util.*;
+import e1.Pair;
+import e1.pieces.KnightPiece;
+import e1.pieces.PawnPiece;
+import e1.pieces.PieceFactory;
+import e1.pieces.PieceFactoryImpl;
+
+import java.util.Random;
 
 public class BoardImpl implements Board {
     private final Random random = new Random();
@@ -20,6 +26,8 @@ public class BoardImpl implements Board {
         pieceFactory = new PieceFactoryImpl();
         this.knight = this.pieceFactory.knight(getRandomEmptyPosition());
         this.pawn = this.pieceFactory.pawn(getRandomEmptyPosition());
+        System.out.println("Knight: " + this.knight.getPosition());
+        System.out.println("Pawn: " + this.pawn.getPosition());
     }
 
     /**
@@ -47,6 +55,8 @@ public class BoardImpl implements Board {
     @Override
     public boolean moveKnight(Pair<Integer, Integer> position) {
         if (this.knight.canMove(position)) {
+            System.out.println("Knight: " + this.knight.getPosition());
+            this.knight.setPosition(position);
             return this.pawn.getPosition().equals(position);
         }
         return false;

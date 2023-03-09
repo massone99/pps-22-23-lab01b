@@ -1,5 +1,8 @@
 package e1;
 
+import e1.board.Board;
+import e1.board.BoardImpl;
+
 public class LogicsImpl implements Logics {
     private final Board board;
     private final int boardSize;

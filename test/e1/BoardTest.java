@@ -1,5 +1,7 @@
 package e1;
 
+import e1.board.Board;
+import e1.board.BoardImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

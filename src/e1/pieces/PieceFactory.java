@@ -1,4 +1,8 @@
-package e1;
+package e1.pieces;
+
+import e1.Pair;
+import e1.pieces.KnightPiece;
+import e1.pieces.PawnPiece;
 
 public interface PieceFactory {
 

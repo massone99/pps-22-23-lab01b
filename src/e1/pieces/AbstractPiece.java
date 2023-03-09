@@ -1,4 +1,6 @@
-package e1;
+package e1.pieces;
+
+import e1.Pair;
 
 public abstract class AbstractPiece {
 
@@ -14,7 +16,7 @@ public abstract class AbstractPiece {
      * @param position
      * @return
      */
-    abstract boolean canMove(Pair<Integer, Integer> position);
+    abstract public boolean canMove(Pair<Integer, Integer> position);
 
     public Pair<Integer, Integer> getPosition() {
         return this.position;
