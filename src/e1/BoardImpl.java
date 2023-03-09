@@ -5,56 +5,49 @@ import java.util.*;
 public class BoardImpl implements Board {
     private final Random random = new Random();
     private final PieceFactory pieceFactory;
-    private KnightPiece knight;
-    private PawnPiece pawn;
+    private final KnightPiece knight;
+    private final PawnPiece pawn;
     private final int size;
 
+    /**
+     * This constructor assigns the knight and the pawn to random
+     * empty positions
+     *
+     * @param size is size of the board
+     */
     public BoardImpl(int size) {
         this.size = size;
         pieceFactory = new PieceFactoryImpl();
-        addKnightToRandomPosition();
-        addPawnToRandomPosition();
+        this.knight = this.pieceFactory.knight(getRandomEmptyPosition());
+        this.pawn = this.pieceFactory.pawn(getRandomEmptyPosition());
     }
 
-    private void addKnightToRandomPosition() {
-        Pair<Integer, Integer> randomEmptyPosition = this.getRandomEmptyPosition();
-        this.knight = this.pieceFactory.knight(randomEmptyPosition);
+    /**
+     * This constructor assigns the knight and pawn to predetermined positions
+     *
+     * @param size           is the size of the board
+     * @param knightPosition is the position of the knight
+     * @param pawnPosition   is the position of the pawn
+     */
+    public BoardImpl(int size, Pair<Integer, Integer> knightPosition, Pair<Integer, Integer> pawnPosition) {
+        this.size = size;
+        pieceFactory = new PieceFactoryImpl();
+        this.knight = this.pieceFactory.knight(knightPosition);
+        this.pawn = this.pieceFactory.pawn(pawnPosition);
     }
 
-    private void addPawnToRandomPosition() {
-        Pair<Integer, Integer> randomEmptyPosition = this.getRandomEmptyPosition();
-        this.pawn = this.pieceFactory.pawn(randomEmptyPosition);
-    }
-
-    @Override
     public Pair<Integer, Integer> getKnightPosition() {
         return this.knight.getPosition();
     }
 
-    @Override
     public Pair<Integer, Integer> getPawnPosition() {
         return this.pawn.getPosition();
     }
 
     @Override
-    public boolean setKnightPosition(Pair<Integer, Integer> pos) {
-        if (isPositionEmpty(pos)) {
-            if (this.knight.canMove(pos)) {
-                this.knight.setPosition(pos);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean setPawnPosition(Pair<Integer, Integer> pos) {
-        if (isPositionEmpty(pos)) {
-            // IMPORTANT: the pawn cannot move in this context
-            if (this.pawn.canMove(pos)) {
-                this.pawn.setPosition(pos);
-                return true;
-            }
+    public boolean moveKnight(Pair<Integer, Integer> position) {
+        if (this.knight.canMove(position)) {
+            return this.pawn.getPosition().equals(position);
         }
         return false;
     }

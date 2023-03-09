@@ -8,12 +8,12 @@ public abstract class AbstractPiece {
         this.position = position;
     }
 
-    void move(Pair<Integer, Integer> position) {
-        if (canMove(position)) {
-            this.position = position;
-        }
-    }
-
+    /**
+     * The method manages if the piece can move according to the rules
+     * intrinsic with the piece (NOT with the board).
+     * @param position
+     * @return
+     */
     abstract boolean canMove(Pair<Integer, Integer> position);
 
     public Pair<Integer, Integer> getPosition() {

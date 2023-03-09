@@ -10,8 +10,5 @@ public interface Board {
 
     Pair<Integer, Integer> getPawnPosition();
 
-    boolean setKnightPosition(Pair<Integer, Integer> pos);
-
-    boolean setPawnPosition(Pair<Integer, Integer> pos);
-
+    boolean moveKnight(Pair<Integer, Integer> position);
 }

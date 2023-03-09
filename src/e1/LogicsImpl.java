@@ -2,23 +2,28 @@ package e1;
 
 public class LogicsImpl implements Logics {
     private final Board board;
-    private final int size;
+    private final int boardSize;
 
     public LogicsImpl(int size) {
-        this.size = size;
         this.board = new BoardImpl(size);
+        this.boardSize = size;
+    }
+
+    public LogicsImpl(int size, Pair<Integer, Integer> knightPosition, Pair<Integer, Integer> pawnPosition) {
+        this.board = new BoardImpl(size, knightPosition, pawnPosition);
+        this.boardSize = size;
     }
 
     @Override
     public boolean hit(int row, int col) {
-        if (row < 0 || col < 0 || row >= this.size || col >= this.size) {
+        checkPositionIsWithinBoundaries(row, col);
+        return this.board.moveKnight(new Pair<>(row, col));
+    }
+
+    private void checkPositionIsWithinBoundaries(int row, int col) {
+        if (row < 0 || col < 0 || row >= this.boardSize || col >= this.boardSize) {
             throw new IndexOutOfBoundsException();
         }
-        Pair<Integer, Integer> knightPosition = this.board.getKnightPosition();
-        if (this.board.setKnightPosition(new Pair<>(row, col))) {
-            return this.board.getPawnPosition().equals(knightPosition);
-        }
-        return false;
     }
 
     @Override
