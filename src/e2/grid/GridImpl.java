@@ -66,15 +66,10 @@ public class GridImpl implements Grid {
 
     @Override
     public int getAdjacentMines(Pair<Integer, Integer> position) {
-        int adjacentMines = 0;;
-        for (int i = (position.getX() - 1); i <= (position.getX() + 1); i++) {
-            for (int j = (position.getY() - 1); j <= (position.getY() + 1); j++) {
-                Pair<Integer, Integer> adjacentPosition = new Pair<>(i, j);
-                if (isWithinGrid(adjacentPosition) && !adjacentPosition.equals(position)) {
-                    if (this.getCellAtPosition(adjacentPosition).isMine()) {
-                        adjacentMines++;
-                    }
-                }
+        int adjacentMines = 0;
+        for (Cell adjacentCell : this.getAdjacentCells(position)) {
+            if (adjacentCell.isMine()) {
+                adjacentMines++;
             }
         }
         return adjacentMines;
